@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div id="container" style="min-width:400px;height:400px"></div>
+<script src="./static/highcharts.js"></script>
+<script src="./static/exporting.js"></script>
+<script src="./static/highcharts-zh_CN.js"></script>
+<script>
+Highcharts.setOptions({
+		global: {
+				useUTC: false
+		}
+});
+function activeLastPointToolip(chart) {
+		var points = chart.series[0].points;
+		chart.tooltip.refresh(points[points.length -1]);
+}
+var chart = Highcharts.chart('container', {
+		chart: {
+				type: 'spline',
+				marginRight: 10,
+				events: {
+						load: function () {
+								var series = this.series[0],
+										chart = this;
+								activeLastPointToolip(chart);
+								setInterval(function () {
+										var x = (new Date()).getTime(), // 当前时间
+											y = parseInt(Math.random() * 10 + 70);          // 随机值
+										series.addPoint([x, y], true, true);
+										activeLastPointToolip(chart);
+								}, 1000);
+						}
+				}
+		},
+		title: {
+				text: '实时心率数据'
+		},
+		xAxis: {
+				type: 'datetime',
+				tickPixelInterval: 150
+		},
+		yAxis: {
+				title: {
+						text: null
+				}
+		},
+		tooltip: {
+				formatter: function () {
+					return '<b>' + this.series.name + '</b><br/>' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' + Highcharts.numberFormat(this.y, 2);
+				}
+		},
+		legend: {
+				enabled: false
+		},
+		series: [{
+				name: '心率数据',
+				data: (function () {
+					var data = [], time = (new Date()).getTime(), i;
+					for (i = -19; i <= 0; i += 1) {
+						data.push({
+							x: time + i * 1000,
+							y: parseInt(Math.random() * 10 + 70)
+						});
+					}
+					return data;
+				}())
+		}]
+});
+</script>
+</body>
+</html>
