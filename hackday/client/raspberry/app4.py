@@ -40,7 +40,7 @@ def main(url):
         "status": 1
     }
 
-    count = 10
+    count = 15
     while True:
         if count > 0 and is_socket:
             server = create_connection(url)
