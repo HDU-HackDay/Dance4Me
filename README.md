@@ -82,3 +82,9 @@ data => {
  
 ### 传感器节点内部走线
 ![chip2](images/chip2.png)
+
+## 团队
+团队成员来自5个不同学校，可谓是大江南北、五湖四海。
+团队临时组队、临时思考idea，现场coding、现场提交code。
+
+![team](images/team.jpg)
