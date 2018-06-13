@@ -88,3 +88,7 @@ data => {
 团队临时组队、临时思考idea，现场coding、现场提交code。
 
 ![team](images/team.jpg)
+
+![](https://static.blog.homeway.me/blog/image/2018.05.21-HDU-Hackday-reward1.jpg)
+
+![](https://static.blog.homeway.me/blog/image/2018.05.21-HDU-Hackday-reward2.jpg)
